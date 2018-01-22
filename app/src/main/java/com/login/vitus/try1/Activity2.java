@@ -3,12 +3,14 @@ package com.login.vitus.try1;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 public class Activity2 extends AppCompatActivity {
 
     EditText ETusename;
     EditText ETpassword;
+    Button btn2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -34,7 +34,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
     protected String doInBackground(String... voids) {
 
         String type = voids[0];
-        String login_url = "http://192.168.1.103/Android/login.php"; //<<<----Server ip here
+        String login_url = "http://ec2-13-127-130-48.ap-south-1.compute.amazonaws.com/Android/login.php"; //<<<----Server ip here
 
         if (type.equals("login")){
 
