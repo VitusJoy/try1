@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 
 
 
-import android.content.Context;
+
 import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -60,6 +60,24 @@ public class Activity2 extends AppCompatActivity {
             alert.show();
 
         }
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
+
+        builder2.setTitle("Exit")
+                .setMessage("Are you Sure")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Activity2.super.onBackPressed();
+                    }
+                })
+                .setNegativeButton("Cancel",null).setCancelable(false);
+        AlertDialog alert2 = builder2.create();
+        alert2.show();
 
     }
 }
