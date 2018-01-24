@@ -35,6 +35,7 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
 
         String type = voids[0];
         String login_url = "http://ec2-13-127-130-48.ap-south-1.compute.amazonaws.com/Android/login.php"; //<<<----Server ip here
+        String register_url = "http://ec2-13-127-130-48.ap-south-1.compute.amazonaws.com/Android/register.php";
 
         if (type.equals("login")){
 
@@ -44,6 +45,49 @@ public class BackgroundWorker extends AsyncTask<String,Void,String> {
                 String pass = voids[2];
 
                 URL url = new URL(login_url);
+                HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
+                String post_data = URLEncoder.encode("usn","UTF-8")+"="+URLEncoder.encode(usn,"UTF-8")+"&"
+                        +URLEncoder.encode("pass","UTF-8")+"="+URLEncoder.encode(pass,"UTF-8");
+                bufferedWriter.write(post_data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+
+                InputStream inputStream =httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream,"iso-8859-1"));
+                String result="";
+                String line="";
+                while ((line = bufferedReader.readLine())!=null){
+                    result += line;
+                }
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();
+                return result;
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+
+        }
+
+
+        if (type.equals("register")){
+
+            try {
+
+                String usn = voids[1];
+                String pass = voids[2];
+
+                URL url = new URL(register_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);

@@ -1,16 +1,23 @@
 package com.login.vitus.try1;
 
+import android.app.AlertDialog;
+
+
+
+import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 public class Activity2 extends AppCompatActivity {
 
     EditText ETusename;
     EditText ETpassword;
-    Button btn2;
+    AlertDialog alert;
+    AlertDialog.Builder builder;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +26,11 @@ public class Activity2 extends AppCompatActivity {
 
         ETusename = (EditText)findViewById(R.id.username1);
         ETpassword = (EditText)findViewById(R.id.password1);
+        builder = new AlertDialog.Builder(this);
+        alert = builder.create();
+        alert.setTitle("Error");
+
+
 
     }
 
@@ -29,5 +41,25 @@ public class Activity2 extends AppCompatActivity {
 
         BackgroundWorker bgw = new BackgroundWorker(this);
         bgw.execute(type,username,password);
+    }
+
+    public void OnRegister(View view) {
+        String username = ETusename.getText().toString();
+        String password = ETpassword.getText().toString();
+        String type = "register";
+
+
+        if(username != null && !password.isEmpty()){
+
+
+            BackgroundWorker bgw = new BackgroundWorker(this);
+            bgw.execute(type,username,password);
+
+        }else {
+            alert.setMessage(" Null entered");
+            alert.show();
+
+        }
+
     }
 }
