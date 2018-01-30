@@ -1,22 +1,24 @@
 package com.login.vitus.try1;
 
 import android.app.AlertDialog;
-
-
-
-
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-public class Activity2 extends AppCompatActivity {
+public class Activity2 extends AppCompatActivity  {
 
     EditText ETusename;
     EditText ETpassword;
     AlertDialog alert;
     AlertDialog.Builder builder;
+
+
+
+
+
 
 
     @Override
@@ -32,15 +34,21 @@ public class Activity2 extends AppCompatActivity {
 
 
 
+
+
+
+
+
     }
 
-    public void OnLogin(View view){
+    public void OnLogin(View view) {
         String username = ETusename.getText().toString();
         String password = ETpassword.getText().toString();
         String type = "login";
 
         BackgroundWorker bgw = new BackgroundWorker(this);
-        bgw.execute(type,username,password);
+        bgw.execute(type, username, password);
+
     }
 
     public void OnRegister(View view) {
@@ -54,6 +62,7 @@ public class Activity2 extends AppCompatActivity {
 
             BackgroundWorker bgw = new BackgroundWorker(this);
             bgw.execute(type,username,password);
+
 
         }else {
             alert.setMessage(" Null entered");
@@ -80,4 +89,6 @@ public class Activity2 extends AppCompatActivity {
         alert2.show();
 
     }
+
+
 }

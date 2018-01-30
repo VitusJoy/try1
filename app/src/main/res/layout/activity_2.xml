@@ -36,7 +36,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Username" />
+        tools:text="Username"
+        android:hint="Enter Username"/>
 
     <EditText
         android:id="@+id/password1"
@@ -51,7 +52,8 @@
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username1" />
+        app:layout_constraintTop_toBottomOf="@+id/username1"
+        android:hint="Enter Username"/>
 
     <Button
         android:id="@+id/button2"

@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent toy = new Intent(MainActivity.this,Activity2.class);
                 startActivity(toy);
+                finish();
 
 
             }
